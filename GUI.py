@@ -1,5 +1,6 @@
 
 import tkinter as tk
+import customtkinter as ctk
 from transcriber import transcribeAPI, mock_transcribeAPI
 from interpreter import Interpreter
 import queue
@@ -15,10 +16,15 @@ TRANSCRIPTION_ON = False
 
 
 def add_widget(text_container, root, text):
-    widget = tk.Label(master=root, width=12, text=text, bd=1, relief="raised",
-                      bg="#5C9BD5", foreground="white", padx=4, pady=4)
+    widget = ctk.CTkButton(master=root, text=text, width=-5, height=20,
+                        command=lambda: print(f"{text} clicked"),
+                        border_color="black", border_width=0, border_spacing=0)
     text_container.configure(state="normal")
-    text_container.window_create("insert", window=widget, padx=10, pady=10)
+    text_container.window_create("insert",
+                                  window=widget, 
+                                #   padx=10, 
+                                #   pady=10
+                                )
     text_container.configure(state="disabled")
 
 def update(text_container, root):
