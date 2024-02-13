@@ -1,0 +1,349 @@
+[
+    {
+        "partial" : "it's called",
+        "partial_result" : [{
+            "conf" : 0.954345,
+            "end" : 0.390000,
+            "start" : 0.000000,
+            "word" : "it's"
+        }, {
+            "conf" : 1.000000,
+            "end" : 0.689797,
+            "start" : 0.390000,
+            "word" : "called"
+        }]
+    },
+    {
+        "partial" : "it's called deep work by",
+        "partial_result" : [{
+            "conf" : 0.956696,
+            "end" : 0.390000,
+            "start" : 0.000000,
+            "word" : "it's"
+        }, {
+            "conf" : 1.000000,
+            "end" : 0.689732,
+            "start" : 0.390000,
+            "word" : "called"
+        }, {
+            "conf" : 0.950987,
+            "end" : 0.960000,
+            "start" : 0.720000,
+            "word" : "deep"
+        }, {
+            "conf" : 0.953415,
+            "end" : 1.200000,
+            "start" : 0.960362,
+            "word" : "work"
+        }, {
+            "conf" : 0.995838,
+            "end" : 1.350000,
+            "start" : 1.201403,
+            "word" : "by"
+        }]
+    },
+    {
+        "partial" : "it's called deep work by",
+        "partial_result" : [{
+            "conf" : 0.956696,
+            "end" : 0.390000,
+            "start" : 0.000000,
+            "word" : "it's"
+          }, {
+            "conf" : 1.000000,
+            "end" : 0.689732,
+            "start" : 0.390000,
+            "word" : "called"
+          }, {
+            "conf" : 0.950987,
+            "end" : 0.960000,
+            "start" : 0.720000,
+            "word" : "deep"
+          }, {
+            "conf" : 0.953415,
+            "end" : 1.200000,
+            "start" : 0.960362,
+            "word" : "work"
+          }, {
+            "conf" : 0.995838,
+            "end" : 1.350000,
+            "start" : 1.201403,
+            "word" : "by"
+          }]
+      },
+      {
+        "partial" : "it's called deep work by cal newport and deep work is a state of",
+        "partial_result" : [{
+            "conf" : 0.956622,
+            "end" : 0.390000,
+            "start" : 0.000000,
+            "word" : "it's"
+          }, {
+            "conf" : 1.000000,
+            "end" : 0.689732,
+            "start" : 0.390000,
+            "word" : "called"
+          }, {
+            "conf" : 0.952621,
+            "end" : 0.960000,
+            "start" : 0.720000,
+            "word" : "deep"
+          }, {
+            "conf" : 0.956754,
+            "end" : 1.200000,
+            "start" : 0.960362,
+            "word" : "work"
+          }, {
+            "conf" : 0.996136,
+            "end" : 1.350000,
+            "start" : 1.201302,
+            "word" : "by"
+          }, {
+            "conf" : 0.928299,
+            "end" : 1.560000,
+            "start" : 1.350000,
+            "word" : "cal"
+          }, {
+            "conf" : 1.000000,
+            "end" : 2.070000,
+            "start" : 1.562052,
+            "word" : "newport"
+          }, {
+            "conf" : 0.996923,
+            "end" : 2.429948,
+            "start" : 2.130000,
+            "word" : "and"
+          }, {
+            "conf" : 0.992596,
+            "end" : 2.670000,
+            "start" : 2.429948,
+            "word" : "deep"
+          }, {
+            "conf" : 0.989904,
+            "end" : 2.910000,
+            "start" : 2.670000,
+            "word" : "work"
+          }, {
+            "conf" : 0.834269,
+            "end" : 3.060000,
+            "start" : 2.940000,
+            "word" : "is"
+          }, {
+            "conf" : 0.914352,
+            "end" : 3.120000,
+            "start" : 3.060000,
+            "word" : "a"
+          }, {
+            "conf" : 0.914352,
+            "end" : 3.480000,
+            "start" : 3.120000,
+            "word" : "state"
+          }, {
+            "conf" : 0.985957,
+            "end" : 3.540000,
+            "start" : 3.480000,
+            "word" : "of"
+          }]
+      },
+      {
+        "partial" : "it's called deep work by cal newport and deep work is a state of focus that you must learn",
+        "partial_result" : [{
+            "conf" : 0.956622,
+            "end" : 0.390000,
+            "start" : 0.000000,
+            "word" : "it's"
+          }, {
+            "conf" : 1.000000,
+            "end" : 0.689732,
+            "start" : 0.390000,
+            "word" : "called"
+          }, {
+            "conf" : 0.952621,
+            "end" : 0.960000,
+            "start" : 0.720000,
+            "word" : "deep"
+          }, {
+            "conf" : 0.956754,
+            "end" : 1.200000,
+            "start" : 0.960362,
+            "word" : "work"
+          }, {
+            "conf" : 0.996136,
+            "end" : 1.350000,
+            "start" : 1.201302,
+            "word" : "by"
+          }, {
+            "conf" : 0.928299,
+            "end" : 1.560000,
+            "start" : 1.350000,
+            "word" : "cal"
+          }, {
+            "conf" : 1.000000,
+            "end" : 2.070000,
+            "start" : 1.562052,
+            "word" : "newport"
+          }, {
+            "conf" : 0.996923,
+            "end" : 2.429948,
+            "start" : 2.130000,
+            "word" : "and"
+          }, {
+            "conf" : 0.992563,
+            "end" : 2.670000,
+            "start" : 2.429948,
+            "word" : "deep"
+          }, {
+            "conf" : 0.989820,
+            "end" : 2.910000,
+            "start" : 2.670000,
+            "word" : "work"
+          }, {
+            "conf" : 0.835709,
+            "end" : 3.060000,
+            "start" : 2.940000,
+            "word" : "is"
+          }, {
+            "conf" : 0.921969,
+            "end" : 3.120000,
+            "start" : 3.060000,
+            "word" : "a"
+          }, {
+            "conf" : 0.921969,
+            "end" : 3.480000,
+            "start" : 3.120000,
+            "word" : "state"
+          }, {
+            "conf" : 1.000000,
+            "end" : 3.540000,
+            "start" : 3.480000,
+            "word" : "of"
+          }, {
+            "conf" : 0.942887,
+            "end" : 4.080000,
+            "start" : 3.540078,
+            "word" : "focus"
+          }, {
+            "conf" : 0.995301,
+            "end" : 4.259846,
+            "start" : 4.081722,
+            "word" : "that"
+          }, {
+            "conf" : 0.994896,
+            "end" : 4.350000,
+            "start" : 4.260000,
+            "word" : "you"
+          }, {
+            "conf" : 1.000000,
+            "end" : 4.800000,
+            "start" : 4.350000,
+            "word" : "must"
+          }, {
+            "conf" : 0.990401,
+            "end" : 5.040000,
+            "start" : 4.800000,
+            "word" : "learn"
+          }]
+      },
+      {
+        "partial" : ""
+      },
+      {
+        "partial" : ""
+      },
+      {
+        "partial" : ""
+      },
+      {
+        "partial" : "coffee",
+        "partial_result" : [{
+            "conf" : 0.975311,
+            "end" : 21.000000,
+            "start" : 20.580000,
+            "word" : "coffee"
+          }]
+      },
+      {
+        "partial" : "coffee",
+        "partial_result" : [{
+            "conf" : 0.984201,
+            "end" : 21.060000,
+            "start" : 20.580000,
+            "word" : "coffee"
+          }]
+      },
+      {
+        "partial" : ""
+      },
+      {
+        "partial" : "down",
+        "partial_result" : [{
+            "conf" : 0.997633,
+            "end" : 24.870000,
+            "start" : 24.510000,
+            "word" : "down"
+          }]
+      },
+      {
+        "partial" : "down going to set",
+        "partial_result" : [{
+            "conf" : 0.995277,
+            "end" : 24.870000,
+            "start" : 24.510000,
+            "word" : "down"
+          }, {
+            "conf" : 1.000000,
+            "end" : 25.440000,
+            "start" : 25.265019,
+            "word" : "going"
+          }, {
+            "conf" : 1.000000,
+            "end" : 25.500000,
+            "start" : 25.440000,
+            "word" : "to"
+          }, {
+            "conf" : 1.000000,
+            "end" : 25.769974,
+            "start" : 25.500000,
+            "word" : "set"
+          }]
+      },
+      {
+        "partial" : "down going to set a timer for",
+        "partial_result" : [{
+            "conf" : 0.995277,
+            "end" : 24.870000,
+            "start" : 24.510000,
+            "word" : "down"
+          }, {
+            "conf" : 1.000000,
+            "end" : 25.440000,
+            "start" : 25.265019,
+            "word" : "going"
+          }, {
+            "conf" : 1.000000,
+            "end" : 25.500000,
+            "start" : 25.440000,
+            "word" : "to"
+          }, {
+            "conf" : 1.000000,
+            "end" : 25.770000,
+            "start" : 25.500000,
+            "word" : "set"
+          }, {
+            "conf" : 0.969770,
+            "end" : 25.800000,
+            "start" : 25.770000,
+            "word" : "a"
+          }, {
+            "conf" : 1.000000,
+            "end" : 26.280000,
+            "start" : 25.800906,
+            "word" : "timer"
+          }, {
+            "conf" : 1.000000,
+            "end" : 26.700000,
+            "start" : 26.490000,
+            "word" : "for"
+          }]
+      }
+]
