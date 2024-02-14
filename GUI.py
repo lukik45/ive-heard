@@ -1,23 +1,24 @@
 
 import tkinter as tk
 import customtkinter as ctk
-from transcriber import transcribeAPI, mock_transcribeAPI
-from interpreter import Interpreter
 import queue
-import threading
+from threading import Thread, Event
 import time
+from word import Word
+from word_processor import WordProcessor
 
 
 transcript_queue = queue.Queue()
 words_queue = queue.Queue()
-command_queue = queue.Queue()
-command_queue.put(True)
+word_pressed_queue = queue.Queue()
+run_flag = Event()
 TRANSCRIPTION_ON = False
 
 
-def add_widget(text_container, root, text):
-    widget = ctk.CTkButton(master=root, text=text, width=-5, height=20,
-                        command=lambda: print(f"{text} clicked"),
+
+def add_widget(text_container, root, word: Word):
+    widget = ctk.CTkButton(master=root, text=word.text, width=-5, height=20,
+                        command= lambda: word_pressed_queue.put(word),
                         border_color="black", border_width=0, border_spacing=0)
     text_container.configure(state="normal")
     text_container.window_create("insert",
@@ -28,9 +29,9 @@ def add_widget(text_container, root, text):
     text_container.configure(state="disabled")
 
 def update(text_container, root):
-    while not command_queue.empty():
-        next_word = words_queue.get()["word"]
-        add_widget(text_container, root, text=next_word)
+    while True:
+        next_word = words_queue.get()
+        add_widget(text_container, root, word=next_word)
 
 
 def start_callback():
@@ -59,14 +60,17 @@ def main():
     stop_button = tk.Button(master=toolbar, text="Stop", command=stop_callback)
     stop_button.pack(side="left")
 
-    print("strating transcriber thread")
-    transcriber_thread = threading.Thread(target=transcribeAPI, args=(transcript_queue, command_queue))
-    transcriber_thread.start()
+    # print("strating transcriber thread")
+    # transcriber_thread = threading.Thread(target=transcribeAPI, args=(transcript_queue, command_queue))
+    # transcriber_thread.start()
 
-    interpreter_thread = threading.Thread(target=Interpreter, args=(transcript_queue, words_queue, command_queue))
-    interpreter_thread.start()
+    # interpreter_thread = threading.Thread(target=Interpreter, args=(transcript_queue, words_queue, command_queue))
+    # interpreter_thread.start()
 
-    update_thread = threading.Thread(target=update, args=(text_container, root))
+    word_processor_thread = Thread(target=WordProcessor, args=(run_flag, words_queue, word_pressed_queue))
+    word_processor_thread.start()
+
+    update_thread = Thread(target=update, args=(text_container, root))
     update_thread.start()
 
     root.mainloop()
