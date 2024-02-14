@@ -4,22 +4,17 @@ from __utils import *
 from abc import ABC, abstractmethod
 from tests.test_audio import test_audio
 from queue import Queue
+from threading import Event
 import json
 
-
-    
-
-
-    
-
-
 class Transcriber(ABC):
-    def __init__(self, transcript_queue:Queue, command_queue: Queue):
+
+    def __init__(self, transcript_queue:Queue, run_flag: Event):
         self.transcript_queue = transcript_queue
-        self.command_queue = command_queue
+        self.run_flag = run_flag
 
     @abstractmethod
-    def start_transcription(self)->None:
+    def transcribe(self)->None:
         pass
 
     
@@ -27,11 +22,10 @@ class Transcriber(ABC):
 class VoskTranscriber(Transcriber):
     def __init__(self, 
                  transcript_queue:Queue, 
-                 command_queue: Queue,
-                 p: pyaudio.PyAudio, 
+                 run_flag: Event, 
                  model_size = "small"):
-        
-        super().__init__(transcript_queue, command_queue)
+        """Transcribes the voice from the source and puts each confirmed word into `transcript_queue`"""
+        super().__init__(transcript_queue, run_flag)
 
         from vosk import Model, KaldiRecognizer
         if model_size == "small":
@@ -45,7 +39,8 @@ class VoskTranscriber(Transcriber):
         self.recognizer = KaldiRecognizer(self.model, SAMPLE_RATE)
         self.recognizer.SetWords(True)  #Why?
         self.recognizer.SetPartialWords(True) #Why?
-        self.p = p
+        self.p = pyaudio.PyAudio()
+        test_audio(self.p)
         self.stream = self.p.open(rate=SAMPLE_RATE,
                             channels=CHANNELS,
                             format=AUDIO_FORMAT,
@@ -59,34 +54,48 @@ class VoskTranscriber(Transcriber):
         self.p.terminate()
         #FIXME: is it needed?
 
-    def start_transcription(self):
-        while not self.command_queue.empty(): #TODO: add a command to stop the transcription
-            data = self.stream.read(CHUNK_SIZE, exception_on_overflow = True)
-            if len(data) == 0:
-                print('no data----------------------------------')
-                continue
-            status = self.recognizer.AcceptWaveform(data)
-            if status:
-                result = self.recognizer.Result()
-                #ignore the result
-            else:
-                partial_result = json.loads(self.recognizer.PartialResult())
-                try:
-                    self.transcript_queue.put(partial_result["partial_result"])
-                    print(f"transcript of length {len(partial_result['partial_result'])} put succesfully.")
-                        
-                
-                except KeyError as e: #final result
+    def transcribe(self):
+        confirmed_len = 0
+        t1 = []
+        t2 = []
+
+        while True:
+            self.run_flag.wait()
+            while self.run_flag.is_set():
+                data = self.stream.read(CHUNK_SIZE, exception_on_overflow = True)
+                if len(data) == 0:
                     continue
+                status = self.recognizer.AcceptWaveform(data)
+                if status:
+                    result = self.recognizer.Result()
+                    #ignore the result
+                    
+                else:
+                    confirmed_words = []
+                    partial_result = json.loads(self.recognizer.PartialResult())
+                    try:
+                        # self.transcript_queue.put(partial_result["partial_result"])
+                        t2 = partial_result["partial_result"]
+                        
+                        # if new partial result
+                        if len(t2) < len(t1):
+                            confirmed_words = t1[confirmed_len:]
+                            confirmed_len = 0
+                        # if partial result extended
+                        elif len(t2) >= len(t1):
+                            for i in range(len(t1)-1,-1,-1):
+                                if t1[i]['word'] == t2[i]['word']:
+                                    confirmed_words = t1[confirmed_len:i+1]
+                                    confirmed_len=i+1
+                                    break
+                        t1 = t2
+
+                        for word in confirmed_words:
+                            self.transcript_queue.put(word['word'])
+                    
+                    except KeyError as e: #final result
+                        continue
                             
-        self.__del__()
-
-
-def transcribeAPI(transcript_queue, command_queue):
-    p = pyaudio.PyAudio()
-    test_audio(p)
-    r = VoskTranscriber(transcript_queue, command_queue, p)
-    r.start_transcription()
 
 
 
