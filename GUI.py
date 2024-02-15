@@ -73,9 +73,7 @@ def main():
     update_thread = Thread(target=update, args=(text_container, root))
     update_thread.start()
 
-    root.mainloop()
-
-
+    root.mainloop()    
 
 if __name__ == "__main__":
     main()

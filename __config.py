@@ -10,3 +10,10 @@ CHUNK_SIZE = 8192 # 8192 bytes = 4096 samples = 256 ms
 
 ## Device settings
 HOST_DEVICE_TYPE = "mac"
+
+DATABASE_PATH = "local1.db"
+
+
+# not needed for now
+# AUTOSAVE_ON = True
+# AUTOSAVE_INTERVAL = 10 # seconds
